@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour
 {
     BoxCollider2D boxCollider;
 
-    float moveSpeed = 0.5f;
+    float moveSpeed = 0.2f;
     float jumpSpeed = 0.5f;
 
     bool rightMoving;
@@ -81,6 +81,7 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Attack"))
         {
             life--;
+
         }
     }
 
@@ -92,6 +93,14 @@ public class PlayerScript : MonoBehaviour
             isGrounded = false; // ínñ Ç©ÇÁó£ÇÍÇΩÇÁ
         }
     }
+
+    void OnGUI()
+    {
+        GUI.contentColor = Color.black;
+        // âÊñ ÇÃç∂è„Ç…ïœêîÇÃílÇï\é¶
+        GUI.Label(new Rect(10, 10, 200, 20), "Debug Value: " + life);
+    }
+
 
     public int getLife()
     {

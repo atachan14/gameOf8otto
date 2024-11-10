@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    int flameCount = 0;
+    int frameCount = 0;
     int secCount = 0;
-    public GameObject lifePrefab;
-    public GameObject tamaPrefab ;
+   
+    public GameObject daiyaPrefab ;
     
     // Start is called before the first frame update
     void Start()
@@ -19,21 +19,27 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        flameCounts();
-
+        frameCounts();
         if (secCount == 10) sec10();
-        
     }
 
-    void flameCounts()
+    void frameCounts()
     {
-        flameCount++;
-        if (flameCount == 60) secCount++;
+        frameCount++;
+        if (frameCount%60 == 0) secCount++;
     }
 
     void sec10()
     {
-        Instantiate(tamaPrefab, new Vector3(20, -1, 0), Quaternion.identity);
+        Instantiate(daiyaPrefab, new Vector3(110, -1, 0), Quaternion.identity);
 
+    }
+
+    void OnGUI()
+    {
+        GUI.contentColor = Color.black;
+        // âÊñ ÇÃç∂è„Ç…ïœêîÇÃílÇï\é¶
+        GUI.Label(new Rect(10, 30, 200, 20), "Debug Value: " + frameCount);
+        GUI.Label(new Rect(10, 50, 200, 20), "Debug Value: " + secCount);
     }
 }
