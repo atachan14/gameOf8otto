@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         frameCounts();
-        if (secCount == 10) sec10();
+        if (frameCount == 100) frame100();
     }
 
     void frameCounts()
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         if (frameCount%60 == 0) secCount++;
     }
 
-    void sec10()
+    void frame100()
     {
         Instantiate(daiyaPrefab, new Vector3(110, -1, 0), Quaternion.identity);
 
