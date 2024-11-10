@@ -10,7 +10,7 @@ public class PlayerScript : MonoBehaviour
     BoxCollider2D boxCollider;
 
     float moveSpeed =20f;
-    float jumpSpeed = 0.8f;
+    public float jumpSpeed = 0.8f;
 
     bool rightMoving;
     bool leftMoving;
