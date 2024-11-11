@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
     void frame100()
     {
         Instantiate(daiyaPrefab, new Vector3(110, -1, 0), Quaternion.identity);
-
     }
 
     void OnGUI()
