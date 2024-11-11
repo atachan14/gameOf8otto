@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
     public Rigidbody2D rb;
     BoxCollider2D boxCollider;
 
-    float moveSpeed =20f;
+    public float moveSpeed = 20f;
     public float jumpSpeed = 0.8f;
 
     bool rightMoving;
@@ -19,12 +19,12 @@ public class PlayerScript : MonoBehaviour
     bool jumping;
     bool sitting;
 
-    public bool isGrounded = false;
+    bool isGrounded = false;
     public LayerMask groundLayer; // ínñ ÇÃÉåÉCÉÑÅ[
-    int jumpingTimer = 0;
-    int maxJumpingTimer = 10;
+    public int jumpingTimer = 0;
+    public int maxJumpingTimer = 10;
 
-    int life = 5;
+    int score = 0;
 
     // Start is called before the first frame update
     void Start()
