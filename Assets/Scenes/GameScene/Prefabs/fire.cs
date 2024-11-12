@@ -5,7 +5,7 @@ using UnityEngine;
 public class fire : MonoBehaviour
 {
     Vector3 direction;
-    public float speed = 0.1f;
+    public float speed = 0.5f;
     // Start is called before the first frame update
     void Start()
     {

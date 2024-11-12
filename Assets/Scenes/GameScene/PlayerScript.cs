@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
 
     public float moveSpeed = 20f;
     public float jumpSpeed = 0.8f;
+    public float fallSpeed = 0.1f;
 
     bool rightMoving;
     bool leftMoving;
@@ -30,6 +31,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
@@ -41,25 +43,14 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.D)) rightMoving = false;
         if (Input.GetKeyUp(KeyCode.A)) leftMoving = false;
 
-        // à⁄ìÆï˚å¸ÇÃåàíË
-        if (rightMoving) moveDirection = Vector2.right;  // âEà⁄ìÆ
-        else if (leftMoving) moveDirection = Vector2.left; // ç∂à⁄ìÆ
-        else moveDirection = Vector2.zero;  // âΩÇ‡âüÇµÇƒÇ¢Ç»ÇØÇÍÇŒí‚é~
-
-      
+        if (rightMoving) transform.position += Vector3.right * moveSpeed;
+        if (leftMoving) transform.position += Vector3.left * moveSpeed;
 
         if (Input.GetKeyDown(KeyCode.W) && isGrounded) jumping = true;
         if (Input.GetKeyUp(KeyCode.W)) { jumping = false; jumpingTimer = 0; }
 
         if (jumping) jump();
-    }
-
-    void FixedUpdate()
-    {
-        Debug.Log("Move Direction: " + moveDirection);
-        Debug.Log("Velocity before: " + rb.velocity);
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, rb.velocity.y);  // Yé≤ÇÃë¨ìxÇÕïœçXÇµÇ»Ç¢
-        Debug.Log("Velocity after: " + rb.velocity);
+        if (!isGrounded) transform.position += Vector3.down * fallSpeed;
     }
 
     void jump()
@@ -71,8 +62,6 @@ public class PlayerScript : MonoBehaviour
             jumping = false;
             jumpingTimer = 0;
         }
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -92,7 +81,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            isGrounded = false; 
+            isGrounded = false;
         }
     }
 
