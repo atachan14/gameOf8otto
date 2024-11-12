@@ -5,7 +5,7 @@ using UnityEngine;
 public class kuppa : MonoBehaviour
 {
 
-    public int fireTriggerSec = 20;
+    public int fireTriggerSec = 16;
     public int fireSec = 4;
     public Vector3 fireSpawnPos = new Vector3(-1, 0, 0);
     public GameObject firePrefab;
