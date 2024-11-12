@@ -31,7 +31,6 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
