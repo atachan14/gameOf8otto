@@ -64,6 +64,11 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public int getScore()
+    {
+        return score;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
@@ -85,11 +90,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    void OnGUI()
-    {
-        GUI.contentColor = Color.black;
-        GUI.Label(new Rect(10, 10, 200, 20), "Debug Value: " + score);
-    }
 
 
 

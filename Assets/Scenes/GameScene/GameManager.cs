@@ -34,11 +34,5 @@ public class GameManager : MonoBehaviour
         Instantiate(daiyaPrefab, new Vector3(110, -1, 0), Quaternion.identity);
     }
 
-    void OnGUI()
-    {
-        GUI.contentColor = Color.black;
-        // ‰æ–Ê‚Ì¶ã‚É•Ï”‚Ì’l‚ğ•\¦
-        GUI.Label(new Rect(10, 30, 200, 20), "Debug Value: " + frameCount);
-        GUI.Label(new Rect(10, 50, 200, 20), "Debug Value: " + secCount);
-    }
+   
 }
