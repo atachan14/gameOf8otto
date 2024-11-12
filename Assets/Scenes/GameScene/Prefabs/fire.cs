@@ -6,7 +6,7 @@ public class fire : MonoBehaviour
 {
     Vector3 direction;
     public float speed = 0.5f;
-    int count = 1200;
+    public int destroyCount = 1200;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +17,8 @@ public class fire : MonoBehaviour
     void Update()
     {
         transform.position += direction*speed;
-        count--;
-        if(count==0) Destroy(gameObject);
+        destroyCount--;
+        if(destroyCount == 0) Destroy(gameObject);
     }
 
     public void setDirection(Vector3 vector)
