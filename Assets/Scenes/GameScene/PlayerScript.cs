@@ -84,7 +84,7 @@ public class PlayerScript : MonoBehaviour
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Attack"))
         {
-            life--;
+            score--;
         }
     }
 
@@ -99,7 +99,7 @@ public class PlayerScript : MonoBehaviour
     void OnGUI()
     {
         GUI.contentColor = Color.black;
-        GUI.Label(new Rect(10, 10, 200, 20), "Debug Value: " + life);
+        GUI.Label(new Rect(10, 10, 200, 20), "Debug Value: " + score);
     }
 
 
