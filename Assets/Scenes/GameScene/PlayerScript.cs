@@ -68,6 +68,11 @@ public class PlayerScript : MonoBehaviour
         return score;
     }
 
+    public void addScore(int num)
+    {
+        this.score += num;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
@@ -78,6 +83,12 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Attack"))
         {
             score--;
+        }
+
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Scores"))
+        {
+            addScore(collision.gameObject.GetComponent<ScoresPerant>().getScore());
+            collision.gameObject.GetComponent<ScoresPerant>().destroyExe();
         }
     }
 
