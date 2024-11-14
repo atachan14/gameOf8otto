@@ -18,6 +18,6 @@ public class ScoreUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Score : " + playerScript.getScore() + "\nTime : " + Time.time.ToString("F2");
+        scoreText.text = "Score : " + playerScript.GetScore() + "\nTime : " + Time.time.ToString("F2");
     }
 }

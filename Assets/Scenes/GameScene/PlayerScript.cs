@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 public class PlayerScript : MonoBehaviour
 {
     public Rigidbody2D rb;
-    BoxCollider2D boxCollider;
 
     public float moveSpeed = 20f;
     public float jumpSpeed = 0.8f;
@@ -15,10 +14,8 @@ public class PlayerScript : MonoBehaviour
 
     bool rightMoving;
     bool leftMoving;
-    Vector2 moveDirection;
 
     bool jumping;
-    bool sitting;
 
     bool isGrounded = false;
     public LayerMask groundLayer; // ínñ ÇÃÉåÉCÉÑÅ[
@@ -31,7 +28,6 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -48,11 +44,11 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && isGrounded) jumping = true;
         if (Input.GetKeyUp(KeyCode.W)) { jumping = false; jumpingTimer = 0; }
 
-        if (jumping) jump();
+        if (jumping) Jump();
         if (!isGrounded) transform.position += Vector3.down * fallSpeed;
     }
 
-    void jump()
+    void Jump()
     {
         jumpingTimer++;
         transform.position += Vector3.up * jumpSpeed;
@@ -63,12 +59,12 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public int getScore()
+    public int GetScore()
     {
         return score;
     }
 
-    public void addScore(int num)
+    public void AddScore(int num)
     {
         this.score += num;
     }
@@ -87,8 +83,14 @@ public class PlayerScript : MonoBehaviour
 
         if(collision.gameObject.layer == LayerMask.NameToLayer("Scores"))
         {
-            addScore(collision.gameObject.GetComponent<ScoresPerant>().getScore());
+            AddScore(collision.gameObject.GetComponent<ScoresPerant>().getScore());
             collision.gameObject.GetComponent<ScoresPerant>().destroyExe();
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            AddScore(-collision.gameObject.GetComponent<EnemySC>().GetAtk());
+            Debug.Log("LayerMask.Enemy hit");
         }
     }
 
