@@ -5,34 +5,33 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    int frameCount = 0;
-    int secCount = 0;
-   
-    public GameObject daiyaPrefab ;
-    
+    private float startTime;
+    private float TimeSpeed = 1;
+            
     // Start is called before the first frame update
     void Start()
     {
         Application.targetFrameRate = 60;
+        startTime =Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-        frameCounts();
-        if (frameCount == 100) frame100();
+       
     }
 
-    void frameCounts()
+    public void setTimeSpeed(float timeSpeed)
     {
-        frameCount++;
-        if (frameCount%60 == 0) secCount++;
+        TimeSpeed = timeSpeed;
     }
 
-    void frame100()
+    public float GetTimeSpeed()
     {
-        Instantiate(daiyaPrefab, new Vector3(110, -1, 0), Quaternion.identity);
+        return TimeSpeed;
     }
+
+   
 
    
 }

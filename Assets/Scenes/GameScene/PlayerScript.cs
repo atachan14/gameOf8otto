@@ -90,7 +90,13 @@ public class PlayerScript : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             AddScore(-collision.gameObject.GetComponent<EnemySC>().GetAtk());
-            Debug.Log("LayerMask.Enemy hit");
+        }
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Augment"))
+        {
+            collision.gameObject.GetComponent<Augment>().Exe();
+            Debug.Log("PlayerScript LayerMask.Augment hit");
+
         }
     }
 
