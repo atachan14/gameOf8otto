@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     private float StartTime { get; set; }
     private float TimeSpeed { get; set; } = 1;
+    public static GameManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public static GameManager Instance { get; private set; }
+    
 
 
     // Start is called before the first frame update
