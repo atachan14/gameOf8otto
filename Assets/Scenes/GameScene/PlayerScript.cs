@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : MoveInTimePerson
 {
     public Rigidbody2D rb;
 

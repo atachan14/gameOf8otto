@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fire : MonoBehaviour
+public class fire : MoveInTimePerson
 {
     Vector3 direction;
     public float speed = 0.5f;

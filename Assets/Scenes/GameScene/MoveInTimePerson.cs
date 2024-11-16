@@ -6,7 +6,7 @@ public class MoveInTimePerson : MonoBehaviour
 {
     private float ActualSpeed;
     public float ConstantSpeed;
-    public float TimeSpeed = 1f;
+    public static float TimeSpeed = 1f;
     GameManager manager;
     // Start is called before the first frame update
 
@@ -17,8 +17,7 @@ public class MoveInTimePerson : MonoBehaviour
 
     void Update()
     {
-        this.TimeSpeed = manager.GetTimeSpeed();
-        ActualSpeed = ConstantSpeed * TimeSpeed;
+       ActualSpeed = ConstantSpeed * TimeSpeed;
     }
 
     

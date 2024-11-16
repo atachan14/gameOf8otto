@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class kuppa : MonoBehaviour
+public class kuppa : MoveInTimePerson
 {
 
     public int fireTriggerSec = 16;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class EnemySC : MonoBehaviour
+public class EnemySC : MoveInTimePerson
 {
     public float speed = 0.2f;
     public int atk = 10;
