@@ -23,7 +23,7 @@ public class EnemySC : MoveInTimePerson
         if (target != null)
         {
            if(target.transform.position.x < transform.position.x) targetDirectionX=Vector3.left;
-            transform.position += targetDirectionX * speed;
+            transform.position += targetDirectionX * speed*Time.deltaTime;
         }
     }
 

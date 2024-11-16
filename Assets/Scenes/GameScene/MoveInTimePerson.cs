@@ -4,24 +4,30 @@ using UnityEngine;
 
 public class MoveInTimePerson : MonoBehaviour
 {
-    private float ActualSpeed;
-    public float ConstantSpeed;
-    public float TimeSpeed = 1f;
+    private float TimeSpeed = 1f;
+    public Vector3 MoveVector = new Vector3();
+
     GameManager manager;
     // Start is called before the first frame update
 
+    private void Awake()
+    {
+        EventManager.Instance.OnTimeSpeedChanged += TimeSpeedChanged;
+    }
     void Start()
     {
-        ActualSpeed = ConstantSpeed;
-        EventManager.Instance.OnTimeSpeedChanged += TimeSpeedChanged;
     }
 
     void Update()
     {
-       ActualSpeed = ConstantSpeed * TimeSpeed;
     }
 
-    public void TimeSpeedChanged(float timeSpeed,float keepTime)
+    public void MoveInTime()
+    {
+        transform.position = MoveVector* TimeSpeed;
+    }
+
+    public virtual void TimeSpeedChanged(float timeSpeed, float keepTime)
     {
         Debug.Log("MoveInTimePerson TimeSpeedChanged");
         float startTime = Time.time;
@@ -34,5 +40,5 @@ public class MoveInTimePerson : MonoBehaviour
 
     }
 
-    
+
 }

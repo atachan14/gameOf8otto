@@ -18,7 +18,6 @@ public class PlayerScript : MoveInTimePerson
     bool jumping;
 
     bool isGrounded = false;
-    public LayerMask groundLayer; // ínñ ÇÃÉåÉCÉÑÅ[
     public int jumpingTimer = 0;
     public int maxJumpingTimer = 10;
 
@@ -33,6 +32,8 @@ public class PlayerScript : MoveInTimePerson
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Time.deltaTime: " + Time.deltaTime);
+
         if (Input.GetKeyDown(KeyCode.D)) rightMoving = true;
         if (Input.GetKeyDown(KeyCode.A)) leftMoving = true;
         if (Input.GetKeyUp(KeyCode.D)) rightMoving = false;
@@ -45,7 +46,6 @@ public class PlayerScript : MoveInTimePerson
         if (Input.GetKeyUp(KeyCode.W)) { jumping = false; jumpingTimer = 0; }
 
         if (jumping) Jump();
-        if (!isGrounded) transform.position += Vector3.down * fallSpeed;
     }
 
     void Jump()
@@ -81,7 +81,7 @@ public class PlayerScript : MoveInTimePerson
             score--;
         }
 
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Scores"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Scores"))
         {
             AddScore(collision.gameObject.GetComponent<ScoresPerant>().getScore());
             collision.gameObject.GetComponent<ScoresPerant>().destroyExe();

@@ -20,13 +20,11 @@ public class DetectionColliderSC : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         GetComponentInParent<EnemySC>().FoundPlayer(collision.gameObject);
-        Debug.Log("OntriggerEnter2D end");
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
             GetComponentInParent<EnemySC>().FoundPlayer(null);
-        Debug.Log("OntriggerExit2D end");
     }
 }
