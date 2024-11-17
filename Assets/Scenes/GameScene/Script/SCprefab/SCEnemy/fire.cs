@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fire : MoveInTimePerson
+public class fire : MonoBehaviour
 {
     Vector3 direction;
     public float speed = 0.5f;
@@ -16,7 +16,7 @@ public class fire : MoveInTimePerson
     // Update is called once per frame
     void Update()
     {
-        transform.position += direction*speed;
+        transform.position += direction*speed*Time.deltaTime;
         destroyCount--;
         if(destroyCount == 0) Destroy(gameObject);
     }

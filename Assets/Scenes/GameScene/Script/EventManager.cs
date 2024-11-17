@@ -32,7 +32,7 @@ public class EventManager : MonoBehaviour
     {
         Debug.Log("Subscribing to OnTimeSpeedChanged");
         EventManager.Instance.TriggerTimeSpeedChanged(0f, 2f);
-        StartCoroutine(Helper.Wait(2f));
+        StartCoroutine(TimeEfect.Wait(2f));
         EventManager.Instance.TriggerTimeSpeedChanged(0.5f, 2f);
 
     }

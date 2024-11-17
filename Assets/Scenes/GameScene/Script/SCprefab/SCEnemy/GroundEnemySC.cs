@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class EnemySC : MoveInTimePerson
+public class EnemySC : MonoBehaviour
 {
-    public float speed = 0.2f;
+    public float speed = 10f;
     public int atk = 10;
     GameObject target = null;
     Vector3 targetDirectionX = new Vector3(0f, 0f, 0f);

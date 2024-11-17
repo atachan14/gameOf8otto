@@ -4,43 +4,39 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerScript : MoveInTimePerson
+public class PlayerScript : MonoBehaviour
 {
-    public Rigidbody2D rb;
 
-    public float moveSpeed = 20f;
-    public float jumpSpeed = 0.8f;
-    public float fallSpeed = 0.1f;
+    public float moveSpeed;
+    public float jumpSpeed;
+    public float maxJumpingTimer;
 
-    bool rightMoving;
-    bool leftMoving;
 
-    bool jumping;
+    private bool rightMoving;
+    private bool leftMoving;
+    private bool jumping;
 
-    bool isGrounded = false;
-    public int jumpingTimer = 0;
-    public int maxJumpingTimer = 10;
+    private bool isGrounded = false;
+    private float jumpingTimer = 0;
 
     int score = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Time.deltaTime: " + Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.D)) rightMoving = true;
         if (Input.GetKeyDown(KeyCode.A)) leftMoving = true;
         if (Input.GetKeyUp(KeyCode.D)) rightMoving = false;
         if (Input.GetKeyUp(KeyCode.A)) leftMoving = false;
 
-        if (rightMoving) transform.position += Vector3.right * moveSpeed;
-        if (leftMoving) transform.position += Vector3.left * moveSpeed;
+        if (rightMoving) transform.position += Vector3.right * moveSpeed * Time.deltaTime;
+        if (leftMoving) transform.position += Vector3.left * moveSpeed * Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.W) && isGrounded) jumping = true;
         if (Input.GetKeyUp(KeyCode.W)) { jumping = false; jumpingTimer = 0; }
@@ -51,8 +47,8 @@ public class PlayerScript : MoveInTimePerson
     void Jump()
     {
         jumpingTimer++;
-        transform.position += Vector3.up * jumpSpeed;
-        if (jumpingTimer == maxJumpingTimer)
+        transform.position += Vector3.up * jumpSpeed * Time.deltaTime;
+        if (jumpingTimer > maxJumpingTimer / Time.deltaTime)
         {
             jumping = false;
             jumpingTimer = 0;
@@ -94,8 +90,7 @@ public class PlayerScript : MoveInTimePerson
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Augment"))
         {
-            collision.gameObject.GetComponent<Augment>().Exe();
-            Debug.Log("PlayerScript LayerMask.Augment hit");
+
 
         }
     }
@@ -108,8 +103,10 @@ public class PlayerScript : MoveInTimePerson
         }
     }
 
-
-
-
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        collision.gameObject.GetComponent<Augment>().Exe();
+        Debug.Log("PlayerScript onTriggerEntert");
+    }
 }
 
