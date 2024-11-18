@@ -1990,6 +1990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a0e1e304622cc439f1630e1adee423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCamera: {fileID: 2130320366}
 --- !u!4 &440816365
 Transform:
   m_ObjectHideFlags: 0
@@ -2760,7 +2761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 25
   jumpSpeed: 50
-  maxJumpingTimer: 0.25
+  maxJumpingTimer: 0.2
 --- !u!212 &737908160
 SpriteRenderer:
   m_ObjectHideFlags: 0

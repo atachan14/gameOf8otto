@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private float StartTime { get; set; }
-    GameObject mainCamera;
+    public GameObject mainCamera;
     CameraController camecon;
     // Start is called before the first frame update
     void Start()
@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
         Time.timeScale = 1;
         camecon = mainCamera.GetComponent<CameraController>();
-        StartCoroutine(TriggerOnceAfterDelay(9f));
-        StartCoroutine(TriggerOnceAfterDelay(16f));
+        //StartCoroutine(TriggerOnceAfterDelay(9f));
+        //StartCoroutine(TriggerOnceAfterDelay(16f));
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         switch (delay)
         {
             case 9f:
-                StartCoroutine(camecon.addCameraSpeedOverTime(0f, 1f, 7f));
+                StartCoroutine(camecon.addCameraSpeedOverTime(0f, 0.1f, 7f));
                 break;
             case 16f:
                 StartCoroutine(camecon.addCameraSpeedOverTime(0f, camecon.GetCameraBaseSpeed(), 1f));
